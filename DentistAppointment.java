@@ -7,18 +7,21 @@ public class DentistAppointment {
 	private Time time;
 	private Date date;
 	private int duration;
+	private String endTime;
+
 
 	// Default Constructor
 	public DentistAppointment(String userFirstName, String userLastName, int userHour, int userMinute, int userMonth, int userDay, int userYear, int userDuration) {
-		person = new Person(userFirstName, userLastName, userZipCode);
+		person = new Person(userFirstName, userLastName);
 		time = new Time(userHour, userMinute);
 		date = new Date(userMonth, userDay, userYear);
 		duration = userDuration;
+		endTime = time.addMinutes(duration);
 	}
 
 	// Constructor with no duration argument
 	public DentistAppointment(String userFirstName, String userLastName, int userHour, int userMinute, int userMonth, int userDay, int userYear) {
-		this.person = new Person(userFirstName, userLastName, userZipCode);
+		this.person = new Person(userFirstName, userLastName);
 		this.time = new Time(userHour, userMinute);
 		this.date = new Date(userMonth, userDay, userYear);
 		this.duration = 30;
