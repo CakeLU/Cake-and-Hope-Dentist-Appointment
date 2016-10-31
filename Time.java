@@ -57,6 +57,7 @@ public class Time {
 		if (newHour > 23) {
 			newHour %= 24;
 		}
+		this.hours = newHour;
 
 		System.out.println("What would you like to change the minute to?");
 		// this.minutes = sc.nextInt();
@@ -65,9 +66,10 @@ public class Time {
 		if (newMinute > 59) {
 			newMinute %= 60;
 		}
+		this.minutes = newMinute;
 	}
 
-	// Function that adds time to a current time
+	// Function that adds time to a current time based on user input.
 	public void addMinutes() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("How much time would you like to add?");
@@ -77,6 +79,25 @@ public class Time {
 			minutes = sc.nextInt();
 		}
 
+		this.minutes += minutes;
+		int addtionalHours = 0;
+
+		// This statement adjusts hours and minutes based on amount of added time
+		if (this.minutes >= 60) {
+			addtionalHours = (int) Math.floor((double) this.minutes / (double) 60);
+			this.minutes %= 60;
+			this.hours += addtionalHours;
+
+			// This statement adjusts hours if it exceed 23
+			if (this.hours >= 24) {
+				this.hours -= 24;
+			}
+
+		}
+	}
+
+	// Method overloading with predetermined value.
+	public void addMinutes(int minutes) {
 		this.minutes += minutes;
 		int addtionalHours = 0;
 
@@ -110,15 +131,13 @@ public class Time {
 
 		else {
 			adjustedHours = Integer.toString(this.hours);
-			adjustedMinutes = Integer.toString(this.minutes);
 		}
 
-		if (this.minutes < 10) {
+		if (minutes < 10) {
 			adjustedMinutes = "0" + this.minutes;
 		}
 
 		else {
-			adjustedHours = Integer.toString(this.hours);
 			adjustedMinutes = Integer.toString(this.minutes);
 		}
 
@@ -127,11 +146,13 @@ public class Time {
 	}
 
 	public static void main(String[] args) {
-		Time test1 = new Time(12, 45);
+		Time test1 = new Time(5, 5);
 		test1.displayTime();
 		test1.addMinutes();
 		test1.displayTime();
 		test1.changeTime();
+		test1.displayTime();
+		test1.addMinutes(30);
 		test1.displayTime();
 	}
 
