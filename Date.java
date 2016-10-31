@@ -18,7 +18,7 @@ public class Date
 	}
 
 	public void display() {
-		System.out.print("" + month + "/" + day + "/" + year);
+		System.out.println("" + month + "/" + day + "/" + year);
 	}
 
 public static void main(String [] args) {

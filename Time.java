@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Time {
 
 	// Class attributes
@@ -60,8 +62,8 @@ public class Time {
 			if (this.hours >= 24) {
 				this.hours -= 24;
 			}
-
 		}
+
 	}
 
 	// Function that adjusts time format and displays it
@@ -75,7 +77,6 @@ public class Time {
 
 		else {
 			adjustedHours = Integer.toString(this.hours);
-			adjustedMinutes = Integer.toString(this.minutes);
 		}
 
 		if (this.minutes < 10) {
@@ -83,19 +84,44 @@ public class Time {
 		}
 
 		else {
-			adjustedHours = Integer.toString(this.hours);
 			adjustedMinutes = Integer.toString(this.minutes);
 		}
 
 
-		System.out.println("The time is " + adjustedHours + ":" + adjustedMinutes);
+		System.out.println(adjustedHours + ":" + adjustedMinutes);
 	}
 
 	public static void main(String[] args) {
-		Time test1 = new Time(12, 45);
+		/*Time test1 = new Time(12, 45);
 		test1.displayTime();
 		test1.addMinutes(240);
-		test1.displayTime();
-	}
+		test1.displayTime();*/
 
+		Time[] timeArray = new Time[4];
+
+		Scanner sc = new Scanner(System.in);
+
+		for (int i = 0; i < timeArray.length; i++) {
+			/*hour =
+			minute =
+			Time temp = new Tme(minute, hour);
+			timeArray[i] = temp;*/
+			System.out.print("Please input the hour: ");
+			int userHour = sc.nextInt();
+			System.out.print("Please input the minute: ");
+			int userMinute = sc.nextInt();
+			Time tmp = new Time(userHour, userMinute);
+			timeArray[i] = tmp;
+			tmp.displayTime();
+
+		}
+
+		for (int i = 0; i < timeArray.length; i++) {
+			System.out.print("How much time would you like to add? ");
+			int userMinutes = sc.nextInt();
+			timeArray[i].addMinutes(userMinutes);
+			timeArray[i].displayTime();
+		}
+
+	}
 }

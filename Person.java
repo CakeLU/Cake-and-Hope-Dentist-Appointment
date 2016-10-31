@@ -19,7 +19,7 @@ public class Person {
 	}
 
 	public void display() {
-		System.out.print("" + firstName + "\n" + lastName + "\n" + zipCode);
+		System.out.println("" + firstName + "\n" + lastName + "\n" + zipCode);
 	}
 
 	public static void main(String [] args) {
